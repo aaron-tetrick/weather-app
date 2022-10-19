@@ -1,3 +1,67 @@
+@import url(https://fonts.googleapis.com/css?family=Comfortaa);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Comfortaa', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    width: 100vw;
+    height: 120px;
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    align-items: center;
+    background-color: rgb(19, 157, 192);
+}
+
 h1 {
-    color: blueviolet;
+    display: flex;
+    justify-content: center;
+    font-size: 2.5rem;
+    width: 300px;
+    margin-left: 200px;
+    color: rgb(255, 255, 255);
+}
+
+#search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#location {
+    height: 40px;
+    width: 600px;
+    padding: 5px;
+    font-size: 1.3rem;
+    border: none;
+    border-right: none;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.search-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    height: 40px;
+    width: 120px;
+    background-color: rgba(196, 87, 24, 0.9);
+    padding: 15px;
+    border: none;
+    border-radius: 0px 5px 5px 0px;
+    color: white;
+    font-weight: bold;
+}
+
+.search-btn:hover {
+    background-color: rgb(209, 79, 39);
+    cursor: pointer;
 }
