@@ -8,15 +8,17 @@
 }
 
 :root {
-    --main-color: rgb(19, 157, 192);
-    --secondary-color: rgba(196, 87, 24, 0.9);;
+    --main-color: rgb(20 110 197);
+    --main-color-clear: rgba(20, 110, 197, .6);
+    --secondary-color: rgba(196, 87, 24, .8);
 }
 
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(218, 218, 218);
+    background-image: url(/imgs/clouds.jpg);
+    background-position: left bottom;
 }
 
 header {
@@ -25,7 +27,8 @@ header {
     display: grid;
     grid-template-columns: 1fr 10fr;
     align-items: center;
-    background-color: var(--main-color);
+    background-color: var(--main-color-clear);
+   
 }
 
 h1 {
@@ -43,6 +46,7 @@ h1 {
     justify-content: center;
     align-items: center;
 }
+
 #location-search {
     height: 40px;
     width: 600px;
@@ -68,11 +72,6 @@ h1 {
     font-weight: bold;
 }
 
-.search-btn:hover {
-    background-color: rgb(209, 79, 39);
-    cursor: pointer;
-}
-
 main {
     display: flex;
     justify-content: center;
@@ -86,13 +85,14 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 100px;
-    width: 50%;
-    max-width: 60%;
-    height: 100%;
-    box-shadow: 0px 1px 60px -20px var(--main-color);
+    gap: 80px;
+    width: 60%;
+    max-width: 80%;
+    height: 80%;
+    box-shadow: 0px 1px 80px -20px var(--main-color);
     padding: 80px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, .5);
+    border-radius: 50px;
     z-index: 1;
 }
 
@@ -122,9 +122,10 @@ main {
 #weather,
 #temp {
     color: var(--main-color);
-    font-size: 5rem;
+    font-size: 4rem;
     inline-size: 300px;
     text-align: center;
+    overflow-wrap: normal;
 }
 
 #location {
@@ -163,16 +164,30 @@ main {
 }
 
 .type-temp {
-    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: var(--secondary-color);
+    color: white;
+    font-size: 1.8rem;
+    padding: 0px 20px;
+    width: 150px;
+    min-height: 50px;
+    border-radius: 5px;
+}
+
+.bold, #far {
+    font-weight: bold;
 }
 
 footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--main-color);
     height: 10vh;
     width: 100%;
+    background-color: var(--main-color-clear);
 }
 
 .signature, footer {
@@ -188,3 +203,16 @@ footer {
     transition: 0.5s;
 }
 
+.type-temp:hover,
+.search-btn:hover {
+    cursor: pointer;
+    background-color: rgba(196, 87, 24, 1);
+    filter: brightness(110%);
+    transition: .3s;
+}
+
+h1::before {
+    content: url(/imgs/partly_cloudy_day_FILL0_wght400_GRAD0_opsz48.svg);
+    margin-right: 5px;
+    filter: invert(36%) sepia(57%) saturate(924%) hue-rotate(343deg) brightness(101%) contrast(99%);
+}
