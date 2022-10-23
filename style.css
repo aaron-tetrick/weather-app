@@ -164,7 +164,7 @@ main {
     font-weight: bold;
 }
 
-.type-temp {
+.temp-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -178,7 +178,7 @@ main {
     border-radius: 5px;
 }
 
-.bold, #far {
+.selected {
     font-weight: bold;
 }
 
@@ -204,7 +204,7 @@ footer {
     transition: 0.5s;
 }
 
-.type-temp:hover,
+.temp-btn:hover,
 .search-btn:hover {
     cursor: pointer;
     background-color: rgba(196, 87, 24, 1);
