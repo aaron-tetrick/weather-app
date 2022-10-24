@@ -41,10 +41,19 @@ h1 {
     color: rgb(255, 255, 255);
 }
 
-#search {
+#search,
+#search-div {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#search-div {
+    flex-direction: column;
+}
+
+.alert-div {
+    margin-top: 10px;
 }
 
 #location-search {
@@ -55,6 +64,16 @@ h1 {
     border: none;
     border-right: none;
     border-radius: 5px 0px 0px 5px;
+}
+
+.alert {
+    background-color: rgba(228, 0, 0, .8);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1.25rem;
+    width: 100%;
 }
 
 .search-btn {
@@ -217,3 +236,4 @@ h1::before {
     margin-right: 5px;
     filter: invert(36%) sepia(57%) saturate(924%) hue-rotate(343deg) brightness(101%) contrast(99%);
 }
+

@@ -35,8 +35,9 @@ class WX {
                 low.textContent = (res.main.temp_min-273.15).toFixed(1) + String.fromCharCode(176);
             }
         })
-        } else { 
-        console.log("NOTHING ENTERED")
+        } else {
+            UI.showAlert(); 
+        console.log("NOTHING")
         };
     } ;
 
@@ -90,9 +91,26 @@ class UI {
             far.classList.add('selected');
         };
     };
+
+    static showAlert() {
+        console.log('alert')
+        const div = document.createElement('div');
+        div.className = 'alert';
+        div.appendChild(document.createTextNode('Please enter a city'));
+        const container = document.querySelector('.alert-div');
+        container.appendChild(div);
+
+        // Vanish in 3 seconds
+         setTimeout(() => document.querySelector('.alert').remove(), 1500);
+    }
+
+    static clearFields() {
+        const search = document.querySelector('#location-search')
+    }
 };
 
 document.querySelector('.search-btn').addEventListener('click', WX.getInfo);
+
 
 document.querySelector('.temp-btn').addEventListener('click',  () => {
     UI.boldText();
