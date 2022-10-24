@@ -85,7 +85,6 @@ class UI {
     static boldText() {
         const far = document.getElementById('far');
         const cel = document.getElementById('cel');
-        console.log(far.classList, cel);
         if(far.className.includes('selected')) {
             far.classList.remove('selected');
             cel.classList.add('selected');
@@ -94,6 +93,18 @@ class UI {
             far.classList.add('selected');
         };
     };
+
+    static changeBkgrd() {
+        const far = document.getElementById('far');
+        const cel = document.getElementById('cel');
+        const tempBtn = document.querySelector('.temp-btn ');
+        if(far.className.includes('selected')) {
+            tempBtn.style.backgroundColor = 'var(--secondary-color)';
+        } else if (cel.className.includes('selected')) {
+            tempBtn.style.backgroundColor = 'var(--main-color)';
+        }
+
+    }
 
     static showAlert() {
         console.log('alert')
@@ -120,5 +131,6 @@ document.querySelector('.search-btn').addEventListener('click', WX.getInfo);
 
 document.querySelector('.temp-btn').addEventListener('click',  () => {
     UI.boldText();
+    UI.changeBkgrd();
     WX.selectTemp();
 });
