@@ -39,6 +39,9 @@ class WX {
             UI.showAlert(); 
         console.log("NOTHING")
         };
+
+          // Clear the search bar
+          UI.clearFields();
     } ;
 
     static selectTemp() {
@@ -105,7 +108,10 @@ class UI {
     }
 
     static clearFields() {
-        const search = document.querySelector('#location-search')
+        let search = document.querySelector('#location-search');
+        console.log(search);
+        search.value = '';
+
     }
 };
 
