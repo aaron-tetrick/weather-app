@@ -1,6 +1,6 @@
 // UI Class: Handle UI information
 class WX {
-    static getInfo() {
+    static async getInfo() {
         const city = document.querySelector('#location-search').value;
         const temp = document.getElementById('temp');
         const location =  document.getElementById('location');
@@ -12,30 +12,36 @@ class WX {
         const low = document.getElementById('low');
         const fahr = document.getElementById('fahr');
         const cel = document.getElementById('cel');
-
+        let msg;
+        
         if (city !== '') {
-        fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=fd750b4ded1cc447604504ec4b1324b7`, {mode: 'cors'})
-        .then(res => { return res.json(); })
-        .then(res => {
-            location.textContent = `${res.name}, ${res.sys.country}`;
-            weather.textContent =  UI.capitalize(res.weather[0].description);
-            humidity.textContent = res.main.humidity + '%';
-            pressure.textContent = res.main.pressure + 'mb'
-            if(fahr.className.includes('selected')) {
-                temp.textContent = (((res.main.temp-273.15)*1.8)+32).toFixed(1) + String.fromCharCode(176);
-                feel.textContent = (((res.main.feels_like-273.15)*1.8)+32).toFixed(1) + String.fromCharCode(176);
-                high.textContent = (((res.main.temp_max-273.15)*1.8)+32).toFixed(1) + String.fromCharCode(176);
-                low.textContent = (((res.main.temp_min-273.15)*1.8)+32).toFixed(1) + String.fromCharCode(176);
-            } else if (cel.className.includes('selected')) {
-                temp.textContent = (res.main.temp-273.15).toFixed(1) + String.fromCharCode(176);
-                feel.textContent = (res.main.feels_like-273.15).toFixed(1) + String.fromCharCode(176);
-                high.textContent = (res.main.temp_max-273.15).toFixed(1) + String.fromCharCode(176);
-                low.textContent = (res.main.temp_min-273.15).toFixed(1) + String.fromCharCode(176);
-            }
-        })
+            try {
+                const res = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=fd750b4ded1cc447604504ec4b1324b7`, {mode: 'cors'})
+                const data = await res.json();
+                location.textContent = `${data.name}, ${data.sys.country}`;
+                weather.textContent =  UI.capitalize(data.weather[0].description);
+                humidity.textContent = data.main.humidity + '%';
+                pressure.textContent = data.main.pressure + 'mb'
+                    if (fahr.className.includes('selected')) {
+                        temp.textContent = (((data.main.temp-273.15)*1.8)+32).toFixed(1) + String.fromCharCode(176);
+                        feel.textContent = (((data.main.feels_like-273.15)*1.8)+32).toFixed(1) + String.fromCharCode(176);
+                        high.textContent = (((data.main.temp_max-273.15)*1.8)+32).toFixed(1) + String.fromCharCode(176);
+                        low.textContent = (((data.main.temp_min-273.15)*1.8)+32).toFixed(1) + String.fromCharCode(176);
+                    } else if (cel.className.includes('selected')) {
+                        temp.textContent = (data.main.temp-273.15).toFixed(1) + String.fromCharCode(176);
+                        feel.textContent = (data.main.feels_like-273.15).toFixed(1) + String.fromCharCode(176);
+                        high.textContent = (data.main.temp_max-273.15).toFixed(1) + String.fromCharCode(176);
+                        low.textContent = (data.main.temp_min-273.15).toFixed(1) + String.fromCharCode(176);
+                    }
+            } catch (err) {
+                console.log(err);
+                msg = 'City not found'
+                UI.showAlert(msg);
+            };
         } else {
             // Show alert if search bar is empty
-            UI.showAlert();
+            msg = 'Please enter a city'
+            UI.showAlert(msg);
         };
 
           // Clear the search bar
@@ -97,7 +103,6 @@ class UI {
         const cel = document.getElementById('cel');
         const tempBtn = document.querySelector('.temp-btn ');
         const container = document.querySelector('.container');
-        console.log(container);
         if(fahr.className.includes('selected')) {
             tempBtn.style.backgroundColor = 'var(--secondary-color)';
             container.style['boxShadow'] = '0px 1px 80px -20px rgba(196, 87, 24, .8)';
@@ -108,11 +113,10 @@ class UI {
 
     }
 
-    static showAlert() {
-        console.log('alert')
+    static showAlert(msg) {
         const div = document.createElement('div');
         div.className = 'alert';
-        div.appendChild(document.createTextNode('Please enter a city'));
+        div.appendChild(document.createTextNode(msg));
         const container = document.querySelector('.alert-div');
         container.appendChild(div);
 
@@ -122,7 +126,6 @@ class UI {
 
     static clearFields() {
         let search = document.querySelector('#location-search');
-        console.log(search);
         search.value = '';
 
     }
@@ -130,14 +133,13 @@ class UI {
     static displayDate() {
         const date = document.querySelector('.date');
         date.textContent = new Date().toLocaleDateString()
-        console.log(date);
-
     }
 };
 
 // Display today's date
 UI.displayDate();
 
+// EVENT LISTENERS
 document.querySelector('.search-btn').addEventListener('click', WX.getInfo);
 
 

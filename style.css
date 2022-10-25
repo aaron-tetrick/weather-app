@@ -65,7 +65,7 @@ h1 {
 }
 
 .alert {
-    background-color: rgba(228, 0, 0, .8);
+    background-color: rgba(228, 47, 47, 0.8);
     color: white;
     padding: 0.5rem;
     border-radius: 4px;
