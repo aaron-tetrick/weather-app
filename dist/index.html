@@ -1,48 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
     <script src="bundle.js" defer></script>
     <title>Weather App</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-    <h1>Weather App</h1>
-    <div id="search-div">
+      <h1>Weather App</h1>
+      <div id="search-div">
         <div id="search">
-            <input id="location-search" type="text" placeholder="Search City...">
-            <button class="search-btn">Search</button>
+          <input
+            id="location-search"
+            type="text"
+            placeholder="Search City..."
+          />
+          <button class="search-btn">Search</button>
         </div>
         <div class="alert-div"></div>
-    </div>
-    <p class="date"></p>
+      </div>
+      <p class="date"></p>
     </header>
     <main>
-        <div class="container">
-            <div class="div-header">
-                <div class="location-div">
-                    <h2 id="temp">--&#176;</h2>
-                    <span id="location">--</span>
-                </div>
-                <h2 id="weather">--</h2>
-            </div>
-            <div class="wx-info">
-                <div class="wx-div"><p>Feels Like</p><span class="wx-span" id="feel">--&#176;</span></div>
-                <div class="wx-div">
-                    <p>Humidity</p>
-                    <span class="wx-span" id="humidity">--%</span>
-                </div>
-                <div class="wx-div"><p>Pressure</p><span class="wx-span" id="pressure">--mb</span></div>
-                <div class="wx-div"><p>High</p><span class="wx-span" id="high">--&#176;</span></div>
-                <div class="wx-div"><p>Low</p><span class="wx-span" id="low">--&#176;</span></div>
-            </div>
-            <button class="temp-btn"><span class="selected" id="fahr">F&#176;</span>/<span id="cel">C&#176;</span></button>
+      <div class="container">
+        <div class="div-header">
+          <div class="location-div">
+            <h2 id="temp">--&#176;</h2>
+            <span id="location">--</span>
+          </div>
+          <h2 id="weather">--</h2>
         </div>
+        <div class="wx-info">
+          <div class="wx-div">
+            <p>Feels Like</p>
+            <span class="wx-span" id="feel">--&#176;</span>
+          </div>
+          <div class="wx-div">
+            <p>Humidity</p>
+            <span class="wx-span" id="humidity">--%</span>
+          </div>
+          <div class="wx-div">
+            <p>Pressure</p>
+            <span class="wx-span" id="pressure">--mb</span>
+          </div>
+          <div class="wx-div">
+            <p>High</p>
+            <span class="wx-span" id="high">--&#176;</span>
+          </div>
+          <div class="wx-div">
+            <p>Low</p>
+            <span class="wx-span" id="low">--&#176;</span>
+          </div>
+        </div>
+        <button class="temp-btn">
+          <span class="selected" id="fahr">F&#176;</span>/<span id="cel"
+            >C&#176;</span
+          >
+        </button>
+      </div>
     </main>
-    <footer><p>Made by <a href="https://github.com/aaron-tetrick" target="_blank" class="signature">Aaron Tetrick</a></p></footer>
-
-</body>
+    <footer>
+      <p>
+        Made by
+        <a
+          href="https://github.com/aaron-tetrick"
+          target="_blank"
+          class="signature"
+          >Aaron Tetrick</a
+        >
+      </p>
+    </footer>
+  </body>
 </html>

@@ -58,7 +58,7 @@ class UI {
     date.textContent = new Date().toLocaleDateString();
   }
 }
-
+// WX Class: Retrieve weather data
 class WX {
   static async getInfo() {
     const city = document.querySelector('#location-search').value;
@@ -76,21 +76,29 @@ class WX {
 
     if (city !== '') {
       try {
-        const res = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=fd750b4ded1cc447604504ec4b1324b7`, { mode: 'cors' });
+        const res = await fetch(
+          `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=fd750b4ded1cc447604504ec4b1324b7`,
+          { mode: 'cors' },
+        );
         const data = await res.json();
         location.textContent = `${data.name}, ${data.sys.country}`;
         weather.textContent = UI.capitalize(data.weather[0].description);
         humidity.textContent = `${data.main.humidity}%`;
         pressure.textContent = `${data.main.pressure}mb`;
+        console.log(data.weather);
         if (fahr.className.includes('selected')) {
-          // eslint-disable-next-line max-len
-          temp.textContent = (((data.main.temp - 273.15) * 1.8) + 32).toFixed(1) + String.fromCharCode(176);
-          feel.textContent = (((data.main.feels_like - 273.15) * 1.8) + 32).toFixed(1) + String.fromCharCode(176);
-          high.textContent = (((data.main.temp_max - 273.15) * 1.8) + 32).toFixed(1) + String.fromCharCode(176);
-          low.textContent = (((data.main.temp_min - 273.15) * 1.8) + 32).toFixed(1) + String.fromCharCode(176);
+          temp.textContent = ((data.main.temp - 273.15) * 1.8 + 32).toFixed(1)
+            + String.fromCharCode(176);
+          feel.textContent = ((data.main.feels_like - 273.15) * 1.8 + 32).toFixed(1)
+            + String.fromCharCode(176);
+          high.textContent = ((data.main.temp_max - 273.15) * 1.8 + 32).toFixed(1)
+            + String.fromCharCode(176);
+          low.textContent = ((data.main.temp_min - 273.15) * 1.8 + 32).toFixed(1)
+            + String.fromCharCode(176);
         } else if (cel.className.includes('selected')) {
           temp.textContent = (data.main.temp - 273.15).toFixed(1) + String.fromCharCode(176);
-          feel.textContent = (data.main.feels_like - 273.15).toFixed(1) + String.fromCharCode(176);
+          feel.textContent = (data.main.feels_like - 273.15).toFixed(1)
+            + String.fromCharCode(176);
           high.textContent = (data.main.temp_max - 273.15).toFixed(1) + String.fromCharCode(176);
           low.textContent = (data.main.temp_min - 273.15).toFixed(1) + String.fromCharCode(176);
         }
@@ -126,10 +134,10 @@ class WX {
         high.textContent = ((newHigh - 32) / 1.8).toFixed(1) + String.fromCharCode(176);
         low.textContent = ((newLow - 32) / 1.8).toFixed(1) + String.fromCharCode(176);
       } else if (fahr.className.includes('selected')) {
-        temp.textContent = ((newTemp * 1.8) + 32).toFixed(1) + String.fromCharCode(176);
-        feel.textContent = ((newFeel * 1.8) + 32).toFixed(1) + String.fromCharCode(176);
-        high.textContent = ((newHigh * 1.8) + 32).toFixed(1) + String.fromCharCode(176);
-        low.textContent = ((newLow * 1.8) + 32).toFixed(1) + String.fromCharCode(176);
+        temp.textContent = (newTemp * 1.8 + 32).toFixed(1) + String.fromCharCode(176);
+        feel.textContent = (newFeel * 1.8 + 32).toFixed(1) + String.fromCharCode(176);
+        high.textContent = (newHigh * 1.8 + 32).toFixed(1) + String.fromCharCode(176);
+        low.textContent = (newLow * 1.8 + 32).toFixed(1) + String.fromCharCode(176);
       }
     }
   }
