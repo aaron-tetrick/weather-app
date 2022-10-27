@@ -57,6 +57,27 @@ class UI {
     const date = document.querySelector('.date');
     date.textContent = new Date().toLocaleDateString();
   }
+
+  static changeBkgrdImg(id) {
+    const body = document.querySelector('body');
+    if (id >= 200 && id <= 232) {
+      body.style.backgroundImage = "url(/imgs/tstorms.jpg)";
+    } else if (id >= 300 && id <= 321 || id >= 500 && id <= 531) {
+      body.style.backgroundImage = "url(/imgs/rain.jpg)";
+    } else if (id >= 600 && id <= 622) {
+      body.style.backgroundImage = "url(/imgs/snow.jpg)";
+    } else if (id >= 701 && id <= 771) { 
+      body.style.backgroundImage = "url(/imgs/haze.jpg)";
+    } else if (id === 781) { 
+      body.style.backgroundImage = "url(/imgs/tornado.jpg)";
+    }  else if (id === 800) { 
+      body.style.backgroundImage = "url(/imgs/clear.jpg)";
+    }  else if (id === 804) { 
+      body.style.backgroundImage = "url(/imgs/overcast.jpg)";
+    } else {
+      body.style.backgroundImage = "url(/imgs/clouds.jpg)";
+    }
+  }
 }
 // WX Class: Retrieve weather data
 class WX {
@@ -85,7 +106,7 @@ class WX {
         weather.textContent = UI.capitalize(data.weather[0].description);
         humidity.textContent = `${data.main.humidity}%`;
         pressure.textContent = `${data.main.pressure}mb`;
-        console.log(data.weather);
+        
         if (fahr.className.includes('selected')) {
           temp.textContent = ((data.main.temp - 273.15) * 1.8 + 32).toFixed(1)
             + String.fromCharCode(176);
@@ -102,6 +123,10 @@ class WX {
           high.textContent = (data.main.temp_max - 273.15).toFixed(1) + String.fromCharCode(176);
           low.textContent = (data.main.temp_min - 273.15).toFixed(1) + String.fromCharCode(176);
         }
+
+        // Change website's background image
+        UI.changeBkgrdImg(data.weather[0].id);
+
       } catch (err) {
         msg = 'City not found';
         UI.showAlert(msg);
@@ -111,6 +136,8 @@ class WX {
       msg = 'Please enter a city';
       UI.showAlert(msg);
     }
+
+    
 
     // Clear the search bar
     UI.clearFields();
