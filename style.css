@@ -17,7 +17,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url(./imgs/clouds.jpg);
+  background-image: url(./dist/imgs/clouds.jpg);
   background-size: cover;
   background-position: 50% 50%;
 }
@@ -238,7 +238,7 @@ footer {
 }
 
 h1::before {
-  content: url(./imgs/wx-app-icon.svg);
+  content: url(./dist/imgs/wx-app-icon.svg);
   margin-right: 5px;
   filter: invert(36%) sepia(57%) saturate(924%) hue-rotate(343deg)
     brightness(101%) contrast(99%);
