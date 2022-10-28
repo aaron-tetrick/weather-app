@@ -106,7 +106,7 @@ class WX {
         weather.textContent = UI.capitalize(data.weather[0].description);
         humidity.textContent = `${data.main.humidity}%`;
         pressure.textContent = `${data.main.pressure}mb`;
-        
+
         if (fahr.className.includes('selected')) {
           temp.textContent = ((data.main.temp - 273.15) * 1.8 + 32).toFixed(1)
             + String.fromCharCode(176);
@@ -126,6 +126,9 @@ class WX {
 
         // Change website's background image
         UI.changeBkgrdImg(data.weather[0].id);
+           
+        // Clear the search bar
+        UI.clearFields();
 
       } catch (err) {
         msg = 'City not found';
@@ -136,11 +139,6 @@ class WX {
       msg = 'Please enter a city';
       UI.showAlert(msg);
     }
-
-    
-
-    // Clear the search bar
-    UI.clearFields();
   }
 
   static selectTemp() {
