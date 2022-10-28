@@ -61,21 +61,21 @@ class UI {
   static changeBkgrdImg(id) {
     const body = document.querySelector('body');
     if (id >= 200 && id <= 232) {
-      body.style.backgroundImage = "url(../imgs/tstorms.jpg)";
+      body.style.backgroundImage = "url(./imgs/tstorms.jpg)";
     } else if (id >= 300 && id <= 321 || id >= 500 && id <= 531) {
-      body.style.backgroundImage = "url(../imgs/rain.jpg)";
+      body.style.backgroundImage = "url(./imgs/rain.jpg)";
     } else if (id >= 600 && id <= 622) {
-      body.style.backgroundImage = "url(../imgs/snow.jpg)";
+      body.style.backgroundImage = "url(./imgs/snow.jpg)";
     } else if (id >= 701 && id <= 771) { 
-      body.style.backgroundImage = "url(../imgs/haze.jpg)";
+      body.style.backgroundImage = "url(./imgs/haze.jpg)";
     } else if (id === 781) { 
-      body.style.backgroundImage = "url(../imgs/tornado.jpg)";
+      body.style.backgroundImage = "url(./imgs/tornado.jpg)";
     }  else if (id === 800) { 
-      body.style.backgroundImage = "url(../imgs/clear.jpg)";
+      body.style.backgroundImage = "url(./imgs/clear.jpg)";
     }  else if (id === 804) { 
-      body.style.backgroundImage = "url(../imgs/overcast.jpg)";
+      body.style.backgroundImage = "url(./imgs/overcast.jpg)";
     } else {
-      body.style.backgroundImage = "url(../imgs/clouds.jpg)";
+      body.style.backgroundImage = "url(./imgs/clouds.jpg)";
     }
   }
 }

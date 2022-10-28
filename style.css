@@ -238,7 +238,7 @@ footer {
 }
 
 h1::before {
-  content: url(/imgs/wx-app-icon.svg);
+  content: url(./imgs/wx-app-icon.svg);
   margin-right: 5px;
   filter: invert(36%) sepia(57%) saturate(924%) hue-rotate(343deg)
     brightness(101%) contrast(99%);
